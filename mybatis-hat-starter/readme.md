@@ -1,0 +1,1 @@
+version 3.5.11 is fork from mybatis-spring-boot-starter 3.0.0

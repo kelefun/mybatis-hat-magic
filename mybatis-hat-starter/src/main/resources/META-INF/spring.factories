@@ -1,0 +1,4 @@
+# Auto Configure
+
+org.springframework.boot.sql.init.dependency.DependsOnDatabaseInitializationDetector=\
+com.jedijava.mybatis.hat.spring.boot.MybatisDependsOnDatabaseInitializationDetector

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <!-- in-memory database and a datasource -->
+    <jdbc:embedded-database id="dataSource">
+        <jdbc:script location="classpath:sql/test.hsql.sql"/>
+    </jdbc:embedded-database>
+
+    <!-- transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <constructor-arg ref="dataSource" />
+    </bean>
+    
+    <!-- enable transaction demarcation with annotations -->
+    <tx:annotation-driven />
+    
+    <!-- simplest possible SqlSessionFactory configuration -->
+    <bean id="sqlSessionFactory" class="com.jedijava.mybatis.hat.spring.HatSqlSessionFactoryBean">
+        <property name="mapperLocations" value="classpath*:com/example/mapper/*.xml"/>
+        <property name="dataSource" ref="dataSource" />
+        <property name="configuration">
+        <bean class="com.jedijava.mybatis.hat.override.HatConfig">
+            <property name="useGeneratedKeys" value="true"/>
+        </bean>
+
+    </property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
+        <property name="basePackage" value="com.jedijava.mybatis.hat.spring.test.prepare.dao"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
+        <property name="basePackage" value="com.jedijava.home.dao"/>
+    </bean>
+
+</beans>
