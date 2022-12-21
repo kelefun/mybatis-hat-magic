@@ -1,6 +1,5 @@
 package com.jedijava.mybatis.hat.sql.pgsql;
 
-import com.google.common.base.Objects;
 import com.jedijava.mybatis.hat.sql.SqlBuilder;
 
 public class PgsqlBuilder extends SqlBuilder {
@@ -13,9 +12,4 @@ public class PgsqlBuilder extends SqlBuilder {
         }
         return page;
     }
-//    @Override
-//    public void page(int pageIndex, int pageSize) {
-//        super.offset = pageSize*pageIndex;
-//        super.limit = pageSize;
-//    }
 }

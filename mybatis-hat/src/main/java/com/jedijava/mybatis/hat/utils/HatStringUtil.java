@@ -148,12 +148,28 @@ public class HatStringUtil {
     }
 
     /**
-     * 字符串是否为空
+     * empty: 表示对象为空或长度为0的String
+     *
      *
      * @return
      */
     public static boolean isEmpty(String str) {
+        return str == null || str.length() == 0;
+    }
+
+    /**
+     * blank: 表示对象为空或长度为0的String、空格字符串
+     * @param str
+     * @return
+     */
+    public static boolean isBlank(String str) {
         return str == null || str.trim().length() == 0;
+    }
+    public static boolean isBlank(Object str) {
+        if(str==null){
+            return true;
+        }
+        return str.toString().trim().length() == 0;
     }
 
     public static boolean isLowerCase(CharSequence str) {

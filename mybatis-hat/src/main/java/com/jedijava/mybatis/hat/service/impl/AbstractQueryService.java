@@ -28,7 +28,7 @@ public abstract class AbstractQueryService<Q extends PageQuery, E extends HatEnt
     }
 
     @Override
-    public Optional<E> selectOne(Q q) {
+    public Optional<E> selectFirst(Q q) {
         List<E> list = selectList(q);
         return list.isEmpty() ? Optional.empty() : Optional.of(list.get(0));
     }

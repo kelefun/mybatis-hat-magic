@@ -7,6 +7,7 @@ import com.jedijava.mybatis.hat.face.entity.QueryEntity;
 import com.jedijava.mybatis.hat.utils.HatStringUtil;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author liukaiyang
@@ -18,6 +19,7 @@ public abstract class SqlBuilder extends WhereClauseBuilder<SqlBuilder> {
     private List<String> orderClause;
     private List<String> groupClause;
     private String havingClause;
+    private LambdaSqlBuilder lsBuilder;
     /**
      * 查询数据的条数，本项目中一般取值于pageSize
      */
@@ -35,7 +37,11 @@ public abstract class SqlBuilder extends WhereClauseBuilder<SqlBuilder> {
     }
 
     public <Q extends QueryEntity> LambdaSqlBuilder<Q> lambda(Q queryEntity) {
-        return new LambdaSqlBuilder<>(queryEntity, getThis());
+        if(Objects.nonNull(lsBuilder)){
+            return lsBuilder;
+        }
+        lsBuilder=new LambdaSqlBuilder<>(queryEntity, getThis());
+        return lsBuilder;
     }
 
     // TODO 后期再考虑是否加入这些复杂的查询

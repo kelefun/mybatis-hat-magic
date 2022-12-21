@@ -24,7 +24,7 @@ public interface QueryService<Q extends PageQuery, E extends HatEntity> extends 
      * @param q
      * @return
      */
-    Optional<E> selectOne(Q q);
+    Optional<E> selectFirst(Q q);
 
     Integer countList(Q q);
 
