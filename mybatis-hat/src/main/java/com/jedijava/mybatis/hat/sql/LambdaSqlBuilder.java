@@ -24,8 +24,9 @@ public class LambdaSqlBuilder<Q extends QueryEntity> {
         return sqlBuilder;
     }
 
-    public void page(int pageIndex, int pageSize) {
+    public LambdaSqlBuilder<Q> page(int pageIndex, int pageSize) {
         sqlBuilder.page(pageIndex, pageSize);
+        return getLambda();
     }
 
     public LambdaSqlBuilder<Q> gt(HatFunction<Q, Object> function) {
@@ -43,11 +44,12 @@ public class LambdaSqlBuilder<Q extends QueryEntity> {
      * @return
      */
     public LambdaSqlBuilder<Q> eq(HatFunction<Q, Object> function) {
-      return  eq(true,function);
+        return eq(true, function);
     }
 
     /**
      * query.eq(StringUtil.isNotBlank(name),Entity::getName)
+     *
      * @param handleBlank true ：属性等于 null或""或" "时则跳过，false 属性可以为 “”" "，但是不管true和false都不能是null,如果想查询为null的字段，请使用isNull或 notNull
      * @param function
      * @return
