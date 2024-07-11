@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.jedijava.mybatis</groupId>
     <artifactId>mybatis-hat-parent</artifactId>
-    <version>3.5.11</version>
+    <version>${hat.version}</version>
     <packaging>pom</packaging>
     <properties>
         <java.version>17</java.version>
@@ -18,7 +18,8 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <mybatis.version>3.5.11</mybatis.version>
+        <hat.version>3.5.0</hat.version>
+        <mybatis.version>3.5.15</mybatis.version>
         <mybatis-freemarker.version>1.2.4</mybatis-freemarker.version>
     </properties>
     <modules>
