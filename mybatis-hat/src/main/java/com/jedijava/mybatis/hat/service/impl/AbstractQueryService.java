@@ -24,7 +24,7 @@ public abstract class AbstractQueryService<Q extends PageQuery, E extends HatEnt
 
     @Override
     public List<E> selectList(Q q) {
-        return queryRepository.selectList(getQuerySql(q));
+        return queryRepository.selectList(buildQuery(q));
     }
 
     @Override
@@ -35,7 +35,7 @@ public abstract class AbstractQueryService<Q extends PageQuery, E extends HatEnt
 
     @Override
     public Integer countList(Q q) {
-        return queryRepository.countList(getQuerySql(q));
+        return queryRepository.countList(buildQuery(q));
     }
 
     @Override
@@ -50,9 +50,9 @@ public abstract class AbstractQueryService<Q extends PageQuery, E extends HatEnt
     /**
      * <code>
      * return sqlBuilder->{
-     *     sqlBuilder.lambda().
+     *     sqlBuilder.lambda(q).eq(FoodCatalogQuery::getFoodName)
      * }
      * </code>
      */
-    public abstract QuerySql getQuerySql(Q q);
+    public abstract QuerySql buildQuery(Q q);
 }

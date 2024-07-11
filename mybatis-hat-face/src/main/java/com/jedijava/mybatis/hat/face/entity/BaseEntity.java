@@ -26,12 +26,12 @@ public class BaseEntity extends HatEntity {
     /**
      * 创建日期
      */
-    private LocalDateTime createDateTime;
+    private LocalDateTime createTime;
 
     /**
      * 更新日期
      */
-    private LocalDateTime updateDateTime;
+    private LocalDateTime updateTime;
 
     public Long getId() {
         return id;
@@ -49,20 +49,20 @@ public class BaseEntity extends HatEntity {
         this.deleted = deleted;
     }
 
-    public LocalDateTime getCreateDateTime() {
-        return createDateTime;
+    public LocalDateTime getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDateTime(LocalDateTime createDateTime) {
-        this.createDateTime = createDateTime;
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
     }
 
-    public LocalDateTime getUpdateDateTime() {
-        return updateDateTime;
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdateDateTime(LocalDateTime updateDateTime) {
-        this.updateDateTime = updateDateTime;
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 
     @Override
@@ -70,8 +70,8 @@ public class BaseEntity extends HatEntity {
         return "BaseEntity{" +
                 "id=" + id +
                 ", deleted=" + deleted +
-                ", createDateTime=" + createDateTime +
-                ", updateDateTime=" + updateDateTime +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
                 '}';
     }
 }

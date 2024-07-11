@@ -1,5 +1,7 @@
 package com.jedijava.mybatis.hat.sql;
 
+import com.jedijava.mybatis.hat.exception.UnsupportedException;
+import com.jedijava.mybatis.hat.face.entity.PageQuery;
 import com.jedijava.mybatis.hat.face.entity.QueryEntity;
 import com.jedijava.mybatis.hat.override.HatFunction;
 import com.jedijava.mybatis.hat.utils.HatStringUtil;
@@ -27,6 +29,12 @@ public class LambdaSqlBuilder<Q extends QueryEntity> {
     public LambdaSqlBuilder<Q> page(int pageIndex, int pageSize) {
         sqlBuilder.page(pageIndex, pageSize);
         return getLambda();
+    }  public LambdaSqlBuilder<Q> page(Q q) {
+        if (q instanceof PageQuery query){
+            sqlBuilder.page(query.getPageIndex(),query.getPageSize());
+            return getLambda();
+        }
+        throw new UnsupportedException();
     }
 
     public LambdaSqlBuilder<Q> gt(HatFunction<Q, Object> function) {

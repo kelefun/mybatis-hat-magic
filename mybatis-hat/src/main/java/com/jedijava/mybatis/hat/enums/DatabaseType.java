@@ -9,4 +9,5 @@ public enum DatabaseType {
     MYSQL,
     ORACLE,
     HSQL,
+    UNKNOWN,
 }

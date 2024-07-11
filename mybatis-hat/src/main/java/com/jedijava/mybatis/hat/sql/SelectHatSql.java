@@ -1,7 +1,6 @@
 package com.jedijava.mybatis.hat.sql;
 
 import com.google.common.collect.Lists;
-import com.jedijava.mybatis.hat.annotation.SelectKeyEntity;
 import com.jedijava.mybatis.hat.enums.SqlKeyword;
 import com.jedijava.mybatis.hat.exception.ConfigException;
 import com.jedijava.mybatis.hat.exception.UnsupportedException;

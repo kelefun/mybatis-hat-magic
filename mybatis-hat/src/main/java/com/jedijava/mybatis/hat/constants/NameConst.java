@@ -17,5 +17,5 @@ public interface NameConst {
     //删除标记字段
     String DEFAULT_DELETE_FLAG_COLUMN="deleted";
     String IGNORE_NULL="ignoreNull";
-    String UPDATE_COLUMN_NAME="update_date_time";
+    String UPDATE_COLUMN_NAME="update_datetime";
 }
